@@ -1,38 +1,54 @@
-.App {
+@font-face {
+  font-family: "BigBro";
+  src: url("./font/Big\ Bro_'s\ Watch.ttf") format("truetype");
+}
+
+.Searchbar {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.Container {
+  height: 50vh;
+  display: flex;
+  align-items: baseline;
+  background-color: #dbdbdb;
+  justify-content: center;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Home {
+  color: black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+video {
+  object-fit: cover;
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  height: 50%;
+  position: fixed;
+  z-index: -100;
+  filter: brightness(50%);
+}
+
+.commercial-container {
+  height: 50vh;
+  display: flex;
   align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  color: rgb(255, 255, 255);
+  text-shadow: 4px 4px #616161;
+  font-family: BigBro;
 }
