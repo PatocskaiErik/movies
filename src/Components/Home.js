@@ -15,7 +15,7 @@ function Home({ title, setTitle }) {
         <video src={backgroundVideo} autoPlay loop muted />
       </div>
       <div className="Container">
-        <form className="form" onSubmit={navigate("/details")}>
+        <form className="form" onSubmit={() => navigate("/details")}>
           <div className="Searchbar">
             <TextField
               className="textfield"
