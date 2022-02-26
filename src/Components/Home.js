@@ -9,31 +9,29 @@ function Home({ title, setTitle }) {
   const navigate = useNavigate();
 
   return (
-    <>
-      <div className="Home">
-        <form className="form">
-          <div className="commercial-container" onSubmit={navigate("/details")}>
-            <div className="title">MOVIE DATABASE</div>
-            <video src={backgroundVideo} autoPlay loop muted />
-          </div>
-          <div className="Container">
-            <div className="Searchbar">
-              <TextField
-                className="textfield"
-                label="Search a movie"
-                variant="outlined"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                style={{ width: 400 }}
-              />
-              <Button variant="outlined" type="submit">
-                Search
-              </Button>
-            </div>
+    <div className="Home">
+      <div className="commercial-container">
+        <div className="title">MOVIE DATABASE</div>
+        <video src={backgroundVideo} autoPlay loop muted />
+      </div>
+      <div className="Container">
+        <form className="form" onSubmit={navigate("/details")}>
+          <div className="Searchbar">
+            <TextField
+              className="textfield"
+              label="Search a movie"
+              variant="outlined"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              style={{ width: 400 }}
+            />
+            <Button variant="outlined" type="submit">
+              Search
+            </Button>
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }
 
