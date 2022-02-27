@@ -2,10 +2,13 @@ import { request } from "graphql-request";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Popcorn from "../picture/popcorn.jpeg";
+import moment from "moment";
 import "../App.css";
 
 const Details = ({ title }) => {
   const [movies, setMovies] = useState();
+
+  let moment = require("moment");
 
   const searchMovies = async () => {
     console.log("submitting");
@@ -99,7 +102,7 @@ const Details = ({ title }) => {
                     <span className="icons icons-yellow">
                       <i className="fas fa-file-invoice-dollar"></i>
                     </span>
-                    {movie.releaseDate}
+                    {moment.utc(movie.releaseDate).format("MM/DD/YYYY")}
                   </p>
                 </div>
               </div>
