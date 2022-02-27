@@ -192,3 +192,7 @@ video {
   align-content: center;
   flex-wrap: wrap;
 }
+
+.scores {
+  font-weight: 600;
+}
