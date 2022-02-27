@@ -19,7 +19,12 @@ const Details = ({ title }) => {
     name
     runtime
     overview
+    score
     releaseDate
+    genres {
+      id
+      name
+    }
     poster {
       large
     }
@@ -87,8 +92,12 @@ const Details = ({ title }) => {
                   <h1 className="heading__primary">
                     {movie.name} <i className="fas fa-fire"></i>
                   </h1>
-                  <div className="movie__tag movie__tag--1">#action</div>
-                  <div className="movie__tag movie__tag--2">#thriller</div>
+                  <div className="movie__tag movie__tag--1">
+                    #{movie.genres[0] ? movie.genres[0].name : ""}
+                  </div>
+                  <div className="movie__tag movie__tag--2">
+                    #{movie.genres[1] ? movie.genres[1].name : ""}
+                  </div>
                 </div>
                 <p className="movie__description">{movie.overview}</p>
                 <div className="movie__details">
@@ -96,13 +105,15 @@ const Details = ({ title }) => {
                     <span className="icons icons-grey">
                       <i className="fas fa-clock"></i>{" "}
                     </span>
-                    {Math.floor(movie.runtime / 60)}h {movie.runtime % 60} m
+                    Duration: {Math.floor(movie.runtime / 60)}h{" "}
+                    {movie.runtime % 60} m
                   </p>
                   <p className="movie__detail">
-                    <span className="icons icons-yellow">
-                      <i className="fas fa-file-invoice-dollar"></i>
-                    </span>
+                    Release date:{" "}
                     {moment.utc(movie.releaseDate).format("MM/DD/YYYY")}
+                  </p>
+                  <p className="scores">
+                    Scores: {movie.score ? movie.score : ""}
                   </p>
                 </div>
               </div>
