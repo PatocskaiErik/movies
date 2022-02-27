@@ -2,7 +2,7 @@ import { request } from "graphql-request";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Popcorn from "../picture/popcorn.jpeg";
-import moment from "moment";
+
 import "../App.css";
 
 const Details = ({ title }) => {
@@ -62,7 +62,11 @@ const Details = ({ title }) => {
   }, []);
 
   if (!movies) {
-    return <div>Betöltés</div>;
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   return (
