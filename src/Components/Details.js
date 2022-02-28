@@ -2,6 +2,7 @@ import { request } from "graphql-request";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Popcorn from "../picture/popcorn.jpeg";
+import { MetroSpinner } from "react-spinners-kit";
 
 import "../App.css";
 
@@ -63,8 +64,19 @@ const Details = ({ title }) => {
 
   if (!movies) {
     return (
-      <div className="loader-container">
-        <div className="loader"></div>
+      <div className="Home">
+        <div className="topnav">
+          <Link to={`/`}>
+            <div className="#home">Home</div>
+          </Link>
+          <Link to={`/details`}>
+            <div className="active">Results</div>
+          </Link>
+          <input type="text" placeholder="Search..." />
+        </div>
+        <div className="spinner">
+          <MetroSpinner size={50} color="#686769" />
+        </div>
       </div>
     );
   }
