@@ -32,6 +32,7 @@ video {
   position: fixed;
   z-index: -100;
   filter: brightness(50%);
+  pointer-events: none;
 }
 
 .commercial-container {
@@ -188,9 +189,9 @@ video {
 .border {
   padding-top: 30px;
   display: flex;
-  flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .scores {
