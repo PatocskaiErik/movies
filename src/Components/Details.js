@@ -1,67 +1,23 @@
-import { request } from "graphql-request";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Popcorn from "../picture/popcorn.jpeg";
 import { MetroSpinner } from "react-spinners-kit";
 import ContentModal from "./ContentModal";
+import { searchMovies } from "../Service/Service";
 
 import "../App.css";
 
-const Details = ({ title, setTitle }) => {
+const Details = ({ title }) => {
   const [movies, setMovies] = useState();
+  const [errorGraphQl, setErrorGraphQl] = useState();
 
   let moment = require("moment");
 
-  const searchMovies = async () => {
-    const query = `{
-    searchMovies(query: "${title}") {
-    id
-    name
-    runtime
-    overview
-    score
-    releaseDate
-    genres {
-      id
-      name
-    }
-    poster {
-      large
-    }
-    cast {
-      id
-      person {
-        name
-      }
-      role {
-        ... on Cast {
-          character
-        }
-      }
-    }
-  }
-}`;
-
-    const url = "https://tmdb.sandbox.zoosh.ie/dev/graphql";
-
-    try {
-      request("https://tmdb.sandbox.zoosh.ie/dev/graphql", query).then(
-        (data) => {
-          const response = data.searchMovies;
-          setMovies(response);
-          console.log(response);
-        }
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    searchMovies();
+    searchMovies(title, setMovies, setErrorGraphQl);
   }, []);
 
-  if (!movies) {
+  if (!movies && !errorGraphQl) {
     return (
       <div className="Home">
         <div className="topnav">
@@ -72,6 +28,19 @@ const Details = ({ title, setTitle }) => {
         <div className="spinner">
           <MetroSpinner size={50} color="#686769" />
         </div>
+      </div>
+    );
+  }
+
+  if (errorGraphQl) {
+    return (
+      <div className="Home">
+        <div className="topnav">
+          <Link to={`/`}>
+            <div className="#home">Home</div>
+          </Link>
+        </div>
+        <div>Please try again later... :(</div>
       </div>
     );
   }

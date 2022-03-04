@@ -8,7 +8,13 @@ import { useState, useEffect } from "react";
 import { MetroSpinner } from "react-spinners-kit";
 import "../styles/detailButton.css";
 import ReactPlayer from "react-player";
-import { fetchIMDBId } from "../Service/Service";
+import {
+  fetchIMDBId,
+  fetchMovieCast,
+  fetchData,
+  fetchTrailer,
+  fetchWikiMedia
+} from "../Service/Service";
 const style = {
   position: "absolute",
   top: "50%",
@@ -36,76 +42,36 @@ const ContentModal = ({ children, id, movieName, movieID, moviePoster }) => {
   const [originalTitle, setOriginalTitle] = useState();
   const [videoURL, setVideoURL] = useState();
   const [tagline, setTagline] = useState();
-  const [error, setError] = useState();
+  const [errorImdbID, setErrorImdbID] = useState();
+  const [errorMovieCast, setErrorMovieCast] = useState();
+  const [errorFetchData, setErrorFetchData] = useState();
+  const [errorFetchTrailer, setErrorFetchTrailer] = useState();
+  const [errorWikiMedia, setErrorWikiMedia] = useState();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const fetchIMDBId = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieID}/external_ids?api_key=5b931ae178d3d6e44b7f162d68bebb43&origin=*`
-    );
-
-    if (data) {
-      setImdbID(data.imdb_id);
-    }
-  };
-
-  const fetchWikiMedia = async () => {
-    const { data } = await axios.get(
-      `https://imdb-api.com/en/API/Wikipedia/k_w0if4ch2/${imdbID}`
-    );
-
-    if (data) {
-      setWikiMedia(data);
-      setPlotShort(data.plotShort.plainText);
-    }
-  };
-
-  const fetchMovieCast = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=5b931ae178d3d6e44b7f162d68bebb43&origin=*&language=en-US`
-    );
-
-    if (data) {
-      setMovieCast(data.cast);
-    }
-  };
-
-  const fetchData = async () => {
-    const { data } = await axios.get(
-      `https://www.myapifilms.com/tmdb/movieInfoImdb?idIMDB=${movieID}&token=268f32cd-409c-490e-bc9c-b6225e6ab4c2&format=json&language=en&alternativeTitles=0&casts=0&images=0&keywords=0&releases=0&videos=0&translations=0&similar=0&reviews=0&lists=0`
-    );
-    setOverview(data.data.overview);
-    setOriginalTitle(data.data.original_title);
-    setTagline(data.data.tagline);
-  };
-
-  const fetchTrailer = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=5b931ae178d3d6e44b7f162d68bebb43&origin=*&language=en-US`
-    );
-    setVideoURL(data.results[0].key);
-  };
-
-  const fetchDetails = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieID}?api_key=5b931ae178d3d6e44b7f162d68bebb43&origin=*&language=en-US`
-    );
-  };
-
   useEffect(() => {
     if (open) {
-      fetchIMDBId();
+      fetchIMDBId(movieID, setImdbID, setErrorImdbID);
+    }
+    if (imdbID) {
+      fetchWikiMedia(imdbID, setPlotShort);
     }
     if (!movieCast) {
-      fetchMovieCast();
+      fetchMovieCast(movieID, setMovieCast, setErrorMovieCast);
     }
     if (!overview && !originalTitle) {
-      fetchData();
+      fetchData(
+        movieID,
+        setOverview,
+        setOriginalTitle,
+        setTagline,
+        setErrorFetchData
+      );
     }
     if (!videoURL) {
-      fetchTrailer();
+      fetchTrailer(movieID, setVideoURL, setErrorFetchTrailer);
     }
   }, [open]);
 
