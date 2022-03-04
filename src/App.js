@@ -16,8 +16,11 @@ const App = () => {
           <Route path="/">
             <Route index element={<Home title={title} setTitle={setTitle} />} />
           </Route>
-          <Route path="/details">
-            <Route index element={<Details title={title} />} />
+          <Route path="/results">
+            <Route
+              index
+              element={<Details title={title} setTitle={setTitle} />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

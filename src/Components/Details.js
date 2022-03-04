@@ -7,7 +7,7 @@ import ContentModal from "./ContentModal";
 
 import "../App.css";
 
-const Details = ({ title }) => {
+const Details = ({ title, setTitle }) => {
   const [movies, setMovies] = useState();
 
   let moment = require("moment");
@@ -49,6 +49,7 @@ const Details = ({ title }) => {
         (data) => {
           const response = data.searchMovies;
           setMovies(response);
+          console.log(response);
         }
       );
     } catch (err) {
@@ -67,10 +68,6 @@ const Details = ({ title }) => {
           <Link to={`/`}>
             <div className="#home">Home</div>
           </Link>
-          <Link to={`/details`}>
-            <div className="active">Results</div>
-          </Link>
-          <input type="text" placeholder="Search..." />
         </div>
         <div className="spinner">
           <MetroSpinner size={50} color="#686769" />
@@ -85,15 +82,16 @@ const Details = ({ title }) => {
         <Link to={`/`}>
           <div className="#home">Home</div>
         </Link>
-        <Link to={`/details`}>
-          <div className="active">Results</div>
-        </Link>
-        <input type="text" placeholder="Search..." />
       </div>
       <div className="border">
         {movies.map((movie) => {
           return (
-            <ContentModal key={movie.id} movieName={movie.name}>
+            <ContentModal
+              key={movie.id}
+              movieName={movie.name}
+              movieID={movie.id}
+              moviePoster={movie.poster == null ? Popcorn : movie.poster.large}
+            >
               <figure className="movie" key={movie.id}>
                 <div className="movie__hero">
                   <img
