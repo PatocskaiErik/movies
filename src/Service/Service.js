@@ -26,7 +26,6 @@ export const searchMovies = async (title, setMovies, setErrorGraphQl) => {
     request("https://tmdb.sandbox.zoosh.ie/dev/graphql", query).then((data) => {
       const response = data.searchMovies;
       setMovies(response);
-      console.log(response);
     });
   } catch (error) {
     setErrorGraphQl(error);
@@ -39,9 +38,8 @@ export const fetchIMDBId = async (movieID, setImdbID, setErrorImdbID) => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/movie/${movieID}/external_ids?api_key=5b931ae178d3d6e44b7f162d68bebb43&origin=*`
     );
-    if (data) {
-      setImdbID(data.imdb_id);
-    }
+
+    setImdbID(data.imdb_id);
   } catch (error) {
     setErrorImdbID(error);
     console.warn("We have some issues with the ImdbID request!");
@@ -58,9 +56,7 @@ export const fetchMovieCast = async (
       `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=5b931ae178d3d6e44b7f162d68bebb43&origin=*&language=en-US`
     );
 
-    if (data) {
-      setMovieCast(data.cast);
-    }
+    setMovieCast(data.cast);
   } catch (error) {
     setErrorMovieCast(error);
     console.warn("We have some issues with the MovieCast request! ");
@@ -72,6 +68,7 @@ export const fetchData = async (
   setOverview,
   setOriginalTitle,
   setTagline,
+  setReleaseDate,
   setErrorFetchData
 ) => {
   try {
@@ -80,6 +77,7 @@ export const fetchData = async (
     );
 
     setOverview(data.data.overview);
+    setReleaseDate(data.data.release_date);
     setOriginalTitle(data.data.original_title);
     setTagline(data.data.tagline);
   } catch (error) {
