@@ -3,11 +3,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import axios from "axios";
 import { useState, useEffect } from "react";
-import { MetroSpinner } from "react-spinners-kit";
 import "../styles/detailButton.css";
 import ReactPlayer from "react-player";
+import axios from "axios";
+
 import {
   fetchIMDBId,
   fetchMovieCast,
@@ -15,6 +15,7 @@ import {
   fetchTrailer,
   fetchWikiMedia
 } from "../Service/Service";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -30,13 +31,10 @@ const style = {
   p: 4
 };
 
-const ContentModal = ({ children, id, movieName, movieID, moviePoster }) => {
+const ContentModal = ({ children, movieID, moviePoster }) => {
   const [open, setOpen] = useState(false);
-  const [wikiMedia, setWikiMedia] = useState({});
-  const [myApiFilms, setMyApiFilms] = useState();
   const [imdbID, setImdbID] = useState("");
   const [plotShort, setPlotShort] = useState("");
-  const [wikimediaName, setWikimediaName] = useState("");
   const [movieCast, setMovieCast] = useState();
   const [overview, setOverview] = useState();
   const [originalTitle, setOriginalTitle] = useState();
@@ -47,18 +45,27 @@ const ContentModal = ({ children, id, movieName, movieID, moviePoster }) => {
   const [errorFetchData, setErrorFetchData] = useState();
   const [errorFetchTrailer, setErrorFetchTrailer] = useState();
   const [errorWikiMedia, setErrorWikiMedia] = useState();
+  const [releaseDate, setReleaseDate] = useState();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const fetchValami = async () => {
+    const { data } = await axios.get(
+      `https://www.myapifilms.com/tmdb/movieInfoImdb?idIMDB=${movieID}&token=268f32cd-409c-490e-bc9c-b6225e6ab4c2&format=json&language=en&alternativeTitles=0&casts=0&images=0&keywords=0&releases=0&videos=0&translations=0&similar=0&reviews=0&lists=0`
+    );
+
+    console.log(data.data.release_date);
+  };
+
   useEffect(() => {
-    if (open) {
+    if (open && !imdbID && !errorImdbID) {
       fetchIMDBId(movieID, setImdbID, setErrorImdbID);
     }
-    if (imdbID) {
-      fetchWikiMedia(imdbID, setPlotShort);
+    if (imdbID && !errorWikiMedia) {
+      fetchWikiMedia(imdbID, setPlotShort, setErrorWikiMedia);
     }
-    if (!movieCast) {
+    if (!movieCast && !errorMovieCast) {
       fetchMovieCast(movieID, setMovieCast, setErrorMovieCast);
     }
     if (!overview && !originalTitle) {
@@ -67,32 +74,15 @@ const ContentModal = ({ children, id, movieName, movieID, moviePoster }) => {
         setOverview,
         setOriginalTitle,
         setTagline,
+        setReleaseDate,
         setErrorFetchData
       );
     }
-    if (!videoURL) {
+    if (!videoURL && !errorFetchTrailer) {
       fetchTrailer(movieID, setVideoURL, setErrorFetchTrailer);
     }
-  }, [open]);
-
-  if (open && !wikiMedia) {
-    return (
-      <>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <div className="spinner">
-              <MetroSpinner size={50} color="#686769" />
-            </div>
-          </Box>
-        </Modal>
-      </>
-    );
-  }
+    fetchValami();
+  }, []);
 
   return (
     <div>
@@ -108,7 +98,7 @@ const ContentModal = ({ children, id, movieName, movieID, moviePoster }) => {
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {originalTitle}
-            <div>({tagline})</div>
+            <div>({tagline ? tagline : releaseDate})</div>
           </Typography>
           <div className="poster-hero">
             <img src={moviePoster} className="movie-poster" />
@@ -134,7 +124,7 @@ const ContentModal = ({ children, id, movieName, movieID, moviePoster }) => {
                     </div>
                   );
                 })
-              : ""}
+              : "Missing data"}
           </div>
           <div className="trailer-container">
             <div className="trailer-title">Trailer</div>
@@ -151,9 +141,24 @@ const ContentModal = ({ children, id, movieName, movieID, moviePoster }) => {
             </div>
           </div>
           <>
-            <div className="container">
-              <Button>Wikipedia</Button>
-              <Button>IMDB</Button>
+            <div className="button-container">
+              <Button
+                sx={{ margin: 1 }}
+                className="button-links"
+                href={`https://en.wikipedia.org/wiki/${originalTitle}`}
+                target="_blank"
+                variant="outlined"
+              >
+                WIKIPEDIA
+              </Button>
+              <Button
+                sx={{ margin: 1 }}
+                href={`https://www.imdb.com/title/${imdbID}`}
+                target="_blank"
+                variant="outlined"
+              >
+                IMDB
+              </Button>
             </div>
           </>
         </Box>
