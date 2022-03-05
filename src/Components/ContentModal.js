@@ -50,14 +50,6 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const fetchValami = async () => {
-    const { data } = await axios.get(
-      `https://www.myapifilms.com/tmdb/movieInfoImdb?idIMDB=${movieID}&token=268f32cd-409c-490e-bc9c-b6225e6ab4c2&format=json&language=en&alternativeTitles=0&casts=0&images=0&keywords=0&releases=0&videos=0&translations=0&similar=0&reviews=0&lists=0`
-    );
-
-    console.log(data.data.release_date);
-  };
-
   useEffect(() => {
     if (open && !imdbID && !errorImdbID) {
       fetchIMDBId(movieID, setImdbID, setErrorImdbID);
@@ -81,7 +73,6 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
     if (!videoURL && !errorFetchTrailer) {
       fetchTrailer(movieID, setVideoURL, setErrorFetchTrailer);
     }
-    fetchValami();
   }, []);
 
   return (
