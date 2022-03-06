@@ -40,7 +40,20 @@ const Details = ({ title }) => {
             <div className="#home">Home</div>
           </Link>
         </div>
-        <div>Please try again later... :(</div>
+        <div className="spinner">Please try again later... :(</div>
+      </div>
+    );
+  }
+
+  if (movies.length < 1) {
+    return (
+      <div className="Home">
+        <div className="topnav">
+          <Link to={`/`}>
+            <div className="#home">Home</div>
+          </Link>
+        </div>
+        <div className="spinner">No results... :(</div>
       </div>
     );
   }
