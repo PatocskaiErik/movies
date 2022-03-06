@@ -38,4 +38,26 @@ describe("Results", () => {
     cy.get("form").submit();
     cy.wait(5000);
   });
+
+  it("should have the correct result data on card", () => {
+    cy.get("#mov")
+      .should("include.text", "Bad Boys for Life")
+      .should(
+        "include.text",
+        "Marcus and Mike are forced to confront new threats, career changes, and midlife crises as they join the newly created elite team AMMO of the Miami police department to take down the ruthless Armando Armas, the vicious leader of a Miami drug cartel."
+      )
+      .should("include.text", "Duration")
+      .should("include.text", "Release date")
+      .should("include.text", "Scores")
+      .should("include.text", "2h 4m")
+      .should("include.text", "01/15/2020")
+      .should("include.text", "7.2")
+      .should("include.text", "Thriller")
+      .should("include.text", "Action");
+  });
+
+  it("should have the correct data on modal", () => {
+    cy.get("#mov").click();
+    cy.get("MuiBox-root").contains("Bad Boys for Life");
+  });
 });
