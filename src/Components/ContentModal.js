@@ -51,10 +51,10 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    if (open && !imdbID && !errorImdbID) {
+    if (!imdbID && !errorImdbID) {
       fetchIMDBId(movieID, setImdbID, setErrorImdbID);
     }
-    if (imdbID && !errorWikiMedia) {
+    if (!plotShort && !errorWikiMedia) {
       fetchWikiMedia(imdbID, setPlotShort, setErrorWikiMedia);
     }
     if (!movieCast && !errorMovieCast) {
