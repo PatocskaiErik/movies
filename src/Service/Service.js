@@ -109,9 +109,7 @@ export const fetchWikiMedia = async (
       `https://imdb-api.com/en/API/Wikipedia/k_w0if4ch2/${imdbID}`
     );
 
-    if (data) {
-      setPlotShort(data.plotShort.plainText);
-    }
+    setPlotShort(data.plotShort.plainText);
   } catch (error) {
     setErrorWikiMedia(error);
     console.warn("We have some issues with the WikiMedia request!");
