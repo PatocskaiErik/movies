@@ -61,7 +61,7 @@ const Details = ({ title }) => {
               movieID={movie.id}
               moviePoster={movie.poster == null ? Popcorn : movie.poster.large}
             >
-              <figure className="movie" key={movie.id}>
+              <figure className="movie" key={movie.id} id="mov">
                 <div className="movie__hero">
                   <img
                     src={movie.poster == null ? Popcorn : movie.poster.large}
@@ -88,7 +88,7 @@ const Details = ({ title }) => {
                         <i className="fas fa-clock"></i>{" "}
                       </span>
                       Duration: {Math.floor(movie.runtime / 60)}h{" "}
-                      {movie.runtime % 60} m
+                      {movie.runtime % 60}m
                     </p>
                     <p className="movie__detail">
                       Release date:{" "}
