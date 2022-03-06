@@ -227,7 +227,7 @@ video {
 
 .actor-name {
   text-align: center;
-  color: black;
+  color: white;
 }
 
 .actor-title {
@@ -259,6 +259,8 @@ video {
 
 .movie-poster {
   margin-right: 20px;
+  max-width: 100%;
+  height: 100%;
 }
 
 .button-container {
