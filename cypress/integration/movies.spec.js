@@ -60,5 +60,24 @@ describe("Results", () => {
     cy.get("#mov").click();
     cy.get("div").contains("Bad Boys for Life");
     cy.get("div").contains("(Ride together. Die together.)");
+    cy.get("#actors").should("include.text", "Will Smith");
+    cy.get("#actors").should("include.text", "Martin Lawrence");
+    cy.get("#actors")
+      .find("img")
+      .should(
+        "have.attr",
+        "src",
+        "https://image.tmdb.org/t/p/w185//6a6cl4ZNufJzrx5HZKWPU1BjjRF.jpg"
+      );
+    cy.get("#wiki")
+      .contains("WIKIPEDIA")
+      .should(
+        "have.attr",
+        "href",
+        "https://en.wikipedia.org/wiki/Bad Boys for Life"
+      );
+    cy.get("#imdb")
+      .contains("IMDB")
+      .should("have.attr", "href", "https://www.imdb.com/title/tt1502397");
   });
 });
