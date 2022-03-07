@@ -54,7 +54,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
     if (!imdbID && !errorImdbID) {
       fetchIMDBId(movieID, setImdbID, setErrorImdbID);
     }
-    if (!plotShort) {
+    if (!plotShort && !errorWikiMedia) {
       fetchWikiMedia(imdbID, setPlotShort, setErrorWikiMedia);
     }
     if (!movieCast && !errorMovieCast) {
@@ -96,7 +96,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
             {plotShort ? plotShort : overview}
           </div>
           <div className="actor-title">Actors</div>
-          <div className="actor-container">
+          <div className="actor-container" id="actors">
             {movieCast
               ? movieCast.map((actor) => {
                   return (
@@ -120,7 +120,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
           </div>
           <div className="trailer-container">
             <div className="trailer-title">Trailer</div>
-            <div>
+            <div id="trailer">
               {!videoURL ? (
                 <div>Video is missing :(</div>
               ) : (
@@ -135,6 +135,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
           <>
             <div className="button-container">
               <Button
+                id="wiki"
                 sx={{ margin: 1 }}
                 className="button-links"
                 href={`https://en.wikipedia.org/wiki/${originalTitle}`}
@@ -144,6 +145,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
                 WIKIPEDIA
               </Button>
               <Button
+                id="imdb"
                 sx={{ margin: 1 }}
                 href={`https://www.imdb.com/title/${imdbID}`}
                 target="_blank"
