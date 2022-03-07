@@ -45,7 +45,7 @@ const Details = ({ title }) => {
     );
   }
 
-  if (movies.length < 1) {
+  if (movies.length == 0) {
     return (
       <div className="Home">
         <div className="topnav">
