@@ -15,7 +15,6 @@
   height: 50vh;
   display: flex;
   align-items: baseline;
-  background-color: #dbdbdb;
   justify-content: center;
   text-align: center;
 }
@@ -66,6 +65,7 @@ video {
 
 .topnav {
   overflow: hidden;
+  display: flex;
   background-color: #535353;
   height: 50px;
 }
