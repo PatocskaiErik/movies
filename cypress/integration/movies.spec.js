@@ -58,6 +58,7 @@ describe("Results", () => {
 
   it("should have the correct data on modal", () => {
     cy.get("#mov").click();
-    cy.get("MuiBox-root").contains("Bad Boys for Life");
+    cy.get("div").contains("Bad Boys for Life");
+    cy.get("div").contains("(Ride together. Die together.)");
   });
 });
