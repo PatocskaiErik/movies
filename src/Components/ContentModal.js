@@ -51,7 +51,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
     if (!imdbID && !errorImdbID) {
       fetchIMDBId(movieID, setImdbID, setErrorImdbID);
     }
-    if (!plotShort) {
+    if (!plotShort && !errorWikiMedia) {
       fetchWikiMedia(imdbID, setPlotShort, setErrorWikiMedia);
     }
     if (!movieCast && !errorMovieCast) {
