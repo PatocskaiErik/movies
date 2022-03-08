@@ -51,7 +51,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
     if (!imdbID && !errorImdbID) {
       fetchIMDBId(movieID, setImdbID, setErrorImdbID);
     }
-    if (!plotShort && !errorWikiMedia) {
+    if (!plotShort) {
       fetchWikiMedia(imdbID, setPlotShort, setErrorWikiMedia);
     }
     if (!movieCast && !errorMovieCast) {
@@ -107,7 +107,6 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
                               actor.profile_path
                             : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
                         }
-                        style={{ height: "278px" }}
                       />
                       <div className="actor-name">{actor.name}</div>
                     </div>
