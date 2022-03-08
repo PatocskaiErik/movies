@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/App.css";
 import Home from "./Components/Home";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

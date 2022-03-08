@@ -4,10 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState, useEffect } from "react";
-import "../styles/detailButton.css";
 import ReactPlayer from "react-player";
-import axios from "axios";
-
 import {
   fetchIMDBId,
   fetchMovieCast,

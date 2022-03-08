@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
-import "../App.css";
+import "../styles/App.css";
 import backgroundVideo from "../videos/Top10.mp4";
 import { TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";

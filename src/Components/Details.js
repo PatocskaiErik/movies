@@ -4,8 +4,7 @@ import Popcorn from "../picture/popcorn.jpeg";
 import { MetroSpinner } from "react-spinners-kit";
 import ContentModal from "./ContentModal";
 import { searchMovies } from "../Service/Service";
-
-import "../App.css";
+import "../styles/App.css";
 
 const Details = ({ title }) => {
   const [movies, setMovies] = useState();
