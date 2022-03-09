@@ -11,7 +11,7 @@ const App = () => {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
+      <BrowserRouter basename={window.location.pathname || ""}>
         <Routes>
           <Route path="/">
             <Route index element={<Home title={title} setTitle={setTitle} />} />
