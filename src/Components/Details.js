@@ -83,9 +83,7 @@ const Details = ({ title }) => {
                 </div>
                 <div className="movie__content">
                   <div className="movie__title">
-                    <h1 className="heading__primary">
-                      {movie.name} <i className="fas fa-fire"></i>
-                    </h1>
+                    <h1 className="heading__primary">{movie.name}</h1>
                     <div className="movie__tag movie__tag--1">
                       #{movie.genres[0] ? movie.genres[0].name : ""}
                     </div>

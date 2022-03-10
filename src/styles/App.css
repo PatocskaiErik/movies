@@ -85,15 +85,6 @@ video {
   color: black;
 }
 
-.topnav input[type="text"] {
-  float: right;
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px;
-}
-
 .movie {
   width: 800px;
   max-height: 530px;
@@ -132,10 +123,6 @@ video {
   color: rgb(40, 60, 172);
 }
 
-.fa-fire {
-  color: salmon;
-}
-
 .movie__tag {
   font-size: 10px;
   color: #fff;
@@ -172,22 +159,6 @@ video {
   align-items: center;
 }
 
-.icons i {
-  margin-right: 3px;
-  font-size: 18px;
-}
-
-.icons-red {
-  color: salmon;
-}
-.icons-grey {
-  color: grey;
-}
-
-.icons-yellow {
-  color: rgb(190, 190, 71);
-}
-
 .border {
   padding-top: 30px;
   display: flex;
@@ -210,26 +181,6 @@ video {
 
 .modal-description {
   margin-top: 20px;
-}
-
-.actor-container {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  height: 500px;
-  overflow: scroll;
-  background-color: #2c333f;
-}
-
-.actor {
-  margin-top: 20px;
-}
-
-.actor-name {
-  text-align: center;
-  color: white;
 }
 
 .actor-title {
