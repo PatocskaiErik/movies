@@ -129,7 +129,7 @@ video {
 .heading__primary {
   font-size: 16px;
   margin-right: auto;
-  color: royalblue;
+  color: rgb(17, 17, 17);
 }
 
 .fa-fire {
@@ -156,11 +156,13 @@ video {
 
 .movie__description {
   font-size: 14px;
+  color: rgb(17, 17, 17);
 }
 
 .movie__details {
   display: flex;
   margin: auto;
+  color: rgb(17, 17, 17);
 }
 
 .movie__detail {
