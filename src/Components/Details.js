@@ -99,8 +99,8 @@ const Details = ({ title }) => {
                       <span className="icons icons-grey">
                         <i className="fas fa-clock"></i>{" "}
                       </span>
-                      Duration: {Math.floor(movie.runtime / 60)}h{" "}
-                      {movie.runtime % 60}m
+                      Duration:{"\n"}
+                      {Math.floor(movie.runtime / 60)}h{movie.runtime % 60}m
                     </p>
                     <p className="movie__detail">
                       Release date:{" "}
