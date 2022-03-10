@@ -246,10 +246,6 @@ video {
   align-items: center;
 }
 
-.actor-photo {
-  height: 278px;
-}
-
 .trailer-title {
   margin-bottom: 20px;
   display: flex;
@@ -273,4 +269,8 @@ video {
   margin-top: 40px;
   display: flex;
   justify-content: flex-end;
+}
+
+.carouselItem {
+  justify-content: center;
 }

@@ -5,6 +5,8 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+import AliceCarousel from "react-alice-carousel";
+import { Carousel } from "./Carousel";
 import {
   fetchIMDBId,
   fetchMovieCast,
@@ -93,27 +95,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
             {plotShort ? plotShort : overview}
           </div>
           <div className="actor-title">Actors</div>
-          <div className="actor-container" id="actors">
-            {movieCast
-              ? movieCast.map((actor) => {
-                  return (
-                    <div className="actor" key={actor.id}>
-                      <img
-                        className="actor-photo"
-                        alt="Photo"
-                        src={
-                          actor.profile_path
-                            ? "https://image.tmdb.org/t/p/w185/" +
-                              actor.profile_path
-                            : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
-                        }
-                      />
-                      <div className="actor-name">{actor.name}</div>
-                    </div>
-                  );
-                })
-              : "Missing data"}
-          </div>
+          <Carousel className="Carousel" movieCast={movieCast} />
           <div className="trailer-container">
             <div className="trailer-title">Trailer</div>
             <div id="trailer">

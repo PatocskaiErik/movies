@@ -1,0 +1,17 @@
+.carouselItem {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  object-fit: contain;
+  padding: 10px;
+  height: 300px;
+  text-align: center;
+}
+
+.carouselItem_img {
+  border-radius: 10px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 5px black;
+  height: 100%;
+  width: 100%;
+}
