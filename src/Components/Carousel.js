@@ -2,6 +2,7 @@ import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import "../styles/Carousel.css";
+import missingImage from "../picture/no-image.png";
 
 const handleDragStart = (e) => e.preventDefault();
 
@@ -24,11 +25,9 @@ export const Carousel = ({ movieCast }) => {
             src={
               actor.profile_path
                 ? "https://image.tmdb.org/t/p/w300/" + actor.profile_path
-                : "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                : missingImage
             }
             alt={actor?.name}
-            ondDragStart={handleDragStart}
-            autoplay={true}
             className="carouselItem_img"
           />
           <div className="carouselItem_txt">{actor?.name}</div>
@@ -41,6 +40,7 @@ export const Carousel = ({ movieCast }) => {
       responsive={responsive}
       infinite
       disableDotsControls
+      mouseDragEnabled
       items={items}
     />
   );
