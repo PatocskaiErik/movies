@@ -162,7 +162,7 @@ video {
 .movie__details {
   display: flex;
   margin: auto;
-  color: rgb(17, 17, 17);
+  color: rgb(134, 0, 0);
 }
 
 .movie__detail {
