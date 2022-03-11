@@ -106,7 +106,7 @@ video {
 .movie__content {
   background-color: #fff;
   flex: 1;
-  padding: 35px 30px;
+  padding: 35px 30px 0px 30px;
   display: flex;
   flex-direction: column;
 }
@@ -144,6 +144,8 @@ video {
 .movie__description {
   font-size: 14px;
   color: rgb(17, 17, 17);
+  height: 400px;
+  overflow: hidden;
 }
 
 .movie__details {
