@@ -53,9 +53,6 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
     if (!imdbID && !errorImdbID) {
       fetchIMDBId(movieID, setImdbID, setErrorImdbID);
     }
-    if (!plotShort && !errorWikiMedia) {
-      fetchWikiMedia(imdbID, setPlotShort, setErrorWikiMedia);
-    }
     if (!movieCast && !errorMovieCast) {
       fetchMovieCast(movieID, setMovieCast, setErrorMovieCast);
     }
@@ -73,6 +70,10 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
       fetchTrailer(movieID, setVideoURL, setErrorFetchTrailer);
     }
   }, []);
+
+  if (imdbID && open === true && !plotShort && !errorWikiMedia) {
+    fetchWikiMedia(imdbID, setPlotShort, setErrorWikiMedia);
+  }
 
   return (
     <div>
@@ -92,7 +93,7 @@ const ContentModal = ({ children, movieID, moviePoster }) => {
           </Typography>
           <div className="poster-hero">
             <img src={moviePoster} className="movie-poster" />
-            {plotShort ? plotShort : overview}
+            <div className="overview">{plotShort ? plotShort : overview}</div>
           </div>
           <div className="actor-title">Actors</div>
           <Carousel className="Carousel" movieCast={movieCast} />

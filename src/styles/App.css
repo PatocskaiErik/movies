@@ -210,6 +210,8 @@ video {
 
 .poster-hero {
   display: flex;
+  max-height: 750px;
+  overflow: scroll;
 }
 
 .movie-poster {
@@ -226,4 +228,9 @@ video {
 
 .carouselItem {
   justify-content: center;
+}
+
+.overview {
+  height: 750px;
+  overflow: scroll;
 }

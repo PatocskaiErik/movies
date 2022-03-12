@@ -96,7 +96,10 @@ export const fetchTrailer = async (
       `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=5b931ae178d3d6e44b7f162d68bebb43&origin=*&language=en-US`
     );
     setVideoURL(data.results[0].key);
-  } catch (error) {}
+  } catch (error) {
+    console.warn("We have some issues with the FetchTrailer request!");
+    setErrorFetchTrailer(error);
+  }
 };
 
 export const fetchWikiMedia = async (
