@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/movies/static/css/main.3c125674.css",
-    "main.js": "/movies/static/js/main.597a24f6.js",
+    "main.css": "/movies/static/css/main.258682af.css",
+    "main.js": "/movies/static/js/main.16e61dbf.js",
     "static/js/787.14e4bc02.chunk.js": "/movies/static/js/787.14e4bc02.chunk.js",
     "static/media/Top10.mp4": "/movies/static/media/Top10.4f87ba11c69e2d507371.mp4",
     "static/media/popcorn.jpeg": "/movies/static/media/popcorn.59561c83f3cdfbe6572b.jpeg",
     "static/media/Big Bro_'s Watch.ttf": "/movies/static/media/Big Bro_'s Watch.d96c56e05962b9807461.ttf",
     "static/media/no-image.png": "/movies/static/media/no-image.1c175136593cb0a69b80.png",
     "index.html": "/movies/index.html",
-    "main.3c125674.css.map": "/movies/static/css/main.3c125674.css.map",
-    "main.597a24f6.js.map": "/movies/static/js/main.597a24f6.js.map",
+    "main.258682af.css.map": "/movies/static/css/main.258682af.css.map",
+    "main.16e61dbf.js.map": "/movies/static/js/main.16e61dbf.js.map",
     "787.14e4bc02.chunk.js.map": "/movies/static/js/787.14e4bc02.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c125674.css",
-    "static/js/main.597a24f6.js"
+    "static/css/main.258682af.css",
+    "static/js/main.16e61dbf.js"
   ]
 }
